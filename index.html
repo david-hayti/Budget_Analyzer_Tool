@@ -1,0 +1,448 @@
+<html>
+
+<head>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/xlsx.full.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#results").hide();
+        $("#footerNote").hide();
+        alert("This app is for campus use only. Therefore, it skips calculation of balances in function code 81 on purpose.");
+    });
+</script>
+
+
+
+<style>
+    body {
+        margin-top: 30pt;
+    }
+
+    #resultTable {
+        width: 580pt;
+        margin-top: 20pt;
+    }
+    #resultTable td {
+        font-family: Calibri;
+        font-size: 12pt;
+        padding-left: 10pt;
+        border: 1px solid #595959;
+	    border-collapse: collapse;
+        height: 20pt;
+
+    }
+
+    #headercells {
+        text-align: center;
+        padding-left: 0pt;
+        font-weight: bold;
+    }
+
+    #totalUsed {
+        padding-left: 0pt;
+        text-align: center;
+        font-weight: bold;
+    }
+
+    #totalAvail {
+        padding-left: 0pt;
+        text-align: center;
+        font-weight: bold;
+    }
+
+    #totalText {
+        text-align: right;
+        padding-right: 15pt;
+        font-weight: bold;
+    }
+
+    #header {
+        font-family: Calibri;
+    }
+
+    #fileUpload {
+        margin-top: 20pt;
+    }
+
+    #instructions {
+        margin-top: 20pt;
+        font-family: Calibri;
+        width: 660pt;
+    }
+
+</style>
+
+
+</head>
+<body>
+<center>
+
+<div id="header">
+    <h2>Available Funds Report</h2>
+</div>
+
+
+<div id="fileUpload" class="">
+<span class="btn btn-primary">
+    <input type="file" name="xlfile" id="xlf" />
+</span>
+</div>
+
+
+
+
+<div id="instructions">
+
+<h4>Get Expenditures vs Revenues report from JR3 and upload here. Below are the instruction how to get this report.</h4>
+
+
+<img class="img-responsive" style="margin-top: 10pt;" src="instruction_1.jpg" alt=""><br>
+<img class="img-responsive" style="margin-top: 10pt;" src="instruction_2.jpg" alt="">
+
+</div>
+
+<div id="results">
+
+<table id="resultTable">
+	<tbody>
+		<tr>
+			<td id="headercells" style="width: 100pt;"><strong>Fund</strong></td>
+			<td id="headercells" style="width: 100pt"><strong>Function</strong></td>
+			<td id="headercells" style="width: 200pt"><strong>Object</strong></td>
+			<td id="headercells" style="width: 100pt"><strong>Used</strong></td>
+			<td id="headercells" style="width: 150pt"><strong>Remaining Funds</strong></td>
+		</tr>
+		<tr>
+			<td rowspan="33">420</td>
+			<td rowspan="3">11</td>
+			<td class="yellowback">62 - Services</td>
+			<td class="used1162 yellowback"></td>
+			<td class="avail1162 yellowback"></td>
+		</tr>
+		<tr>
+			<td class="yellowback">63 - Supplies</td>
+			<td class="used1163 yellowback"></td>
+			<td class="avail1163 yellowback"></td>
+		</tr>
+		<tr>
+			<td class="yellowback">64 - Miscellaneous</td>
+			<td class="used1164 yellowback"></td>
+			<td class="avail1164 yellowback"></td>
+		</tr>
+		<tr>
+			<td rowspan="3">12</td>
+			<td>62 - Services</td>
+			<td class="used1262"></td>
+			<td class="avail1262"></td>
+		</tr>
+		<tr>
+			<td>63 - Supplies</td>
+			<td class="used1263"></td>
+			<td class="avail1263"></td>
+		</tr>
+		<tr>
+			<td>64 - Miscellaneous</td>
+			<td class="used1264"></td>
+			<td class="avail1264"></td>
+		</tr>
+		<tr>
+			<td rowspan="3">13</td>
+			<td>62 - Services</td>
+			<td class="used1362"></td>
+			<td class="avail1362"></td>
+		</tr>
+		<tr>
+			<td>63 - Supplies</td>
+			<td class="used1363"></td>
+			<td class="avail1363"></td>
+		</tr>
+		<tr>
+			<td>64 - Miscellaneous</td>
+			<td class="used1364"></td>
+			<td class="avail1364"></td>
+		</tr>
+		<tr>
+			<td rowspan="3">23</td>
+			<td>62 - Services</td>
+			<td class="used2362"></td>
+			<td class="avail2362"></td>
+		</tr>
+		<tr>
+			<td>63 - Supplies</td>
+			<td class="used2363"></td>
+			<td class="avail2363"></td>
+		</tr>
+		<tr>
+			<td>64 - Miscellaneous</td>
+			<td class="used2364"></td>
+			<td class="avail2364"></td>
+		</tr>
+		<tr>
+			<td rowspan="3">33</td>
+			<td>62 - Services</td>
+			<td class="used3362"></td>
+			<td class="avail3362"></td>
+		</tr>
+		<tr>
+			<td>63 - Supplies</td>
+			<td class="used3363"></td>
+			<td class="avail3363"></td>
+		</tr>
+		<tr>
+			<td>64 - Miscellaneous</td>
+			<td class="used3364"></td>
+			<td class="avail3364"></td>
+		</tr>
+		<tr>
+			<td rowspan="3">34</td>
+			<td>62 - Services</td>
+			<td class="used3462"></td>
+			<td class="avail3462"></td>
+		</tr>
+		<tr>
+			<td>63 - Supplies</td>
+			<td class="used3463"></td>
+			<td class="avail3463"></td>
+		</tr>
+		<tr>
+			<td>64 - Miscellaneous</td>
+			<td class="used3464"></td>
+			<td class="avail3464"></td>
+		</tr>
+		<tr>
+			<td rowspan="3">36</td>
+			<td>62 - Services</td>
+			<td class="used3662"></td>
+			<td class="avail3662"></td>
+		</tr>
+		<tr>
+			<td>63 - Supplies</td>
+			<td class="used3663"></td>
+			<td class="avail3663"></td>
+		</tr>
+		<tr>
+			<td>64 - Miscellaneous</td>
+			<td class="used3664"></td>
+			<td class="avail3664"></td>
+		</tr>
+		<tr>
+			<td rowspan="3">41</td>
+			<td>62 - Services</td>
+			<td class="used4162"></td>
+			<td class="avail4162"></td>
+		</tr>
+		<tr>
+			<td>63 - Supplies</td>
+			<td class="used4163"></td>
+			<td class="avail4163"></td>
+		</tr>
+		<tr>
+			<td>64 - Miscellaneous</td>
+			<td class="used4164"></td>
+			<td class="avail4164"></td>
+		</tr>
+		<tr>
+			<td rowspan="3">51</td>
+			<td>62 - Services</td>
+			<td class="used5162"></td>
+			<td class="avail5162"></td>
+		</tr>
+		<tr>
+			<td>63 - Supplies</td>
+			<td class="used5163"></td>
+			<td class="avail5163"></td>
+		</tr>
+		<tr>
+			<td>64 - Miscellaneous</td>
+			<td class="used5164"></td>
+			<td class="avail5164"></td>
+		</tr>
+		<tr>
+			<td rowspan="3">52</td>
+			<td>62 - Services</td>
+			<td class="used5262"></td>
+			<td class="avail5262"></td>
+		</tr>
+		<tr>
+			<td>63 - Supplies</td>
+			<td class="used5263"></td>
+			<td class="avail5263"></td>
+		</tr>
+		<tr>
+			<td>64 - Miscellaneous</td>
+			<td class="used5264"></td>
+			<td class="avail5264"></td>
+		</tr>
+		<tr>
+			<td rowspan="3">53</td>
+			<td>62 - Services</td>
+			<td class="used5362"></td>
+			<td class="avail5362"></td>
+		</tr>
+		<tr>
+			<td>63 - Supplies</td>
+			<td class="used5363"></td>
+			<td class="avail5363"></td>
+		</tr>
+		<tr>
+			<td>64 - Miscellaneous</td>
+			<td class="used5364"></td>
+			<td class="avail5364"></td>
+		</tr>
+		<tr>
+			<td colspan="5"></td>
+		</tr>
+		<tr>
+			<td colspan="3"></td>
+			<td id="headercells">Used</td>
+			<td id="headercells">Remaining Funds</td>
+		</tr>
+		<tr>
+			<td colspan="3" id="totalText"></td>
+			<td id="totalUsed"></td>
+			<td id="totalAvail"></td>
+		</tr>
+	</tbody>
+</table>
+
+</div>
+
+<div id="footerNote" style="margin-top: 20pt;">
+    <h5>Note: USED percentage is for total allocated amount for all purchase orders, it is not the actual money spent.</h5>
+    <h5>You may be able to make more funds available by doing po maintenance</h5>
+</div>
+
+
+</center>
+
+
+<script type="text/javascript" src="js/shim.js"></script>
+<script>
+function handleFile(e) {
+  var files = e.target.files;
+  var i,f;
+  for (i = 0; i != files.length; ++i) {
+    f = files[i];
+    var reader = new FileReader();
+    var name = f.name;
+    reader.onload = function(e) {
+      var data = e.target.result;
+
+      var workbook = XLSX.read(data, {type: 'binary'});
+      
+
+    /* DO SOMETHING WITH workbook HERE */
+        var first_sheet_name = workbook.SheetNames[0];
+    /* Get worksheet */
+        var worksheet = workbook.Sheets[first_sheet_name];
+        var newArr = XLSX.utils.sheet_to_json(worksheet);
+
+        
+
+        for(i=0; i < newArr.length; i++) {
+            newArr[i].Unencumbered = parseFloat(newArr[i].Unencumbered);
+            newArr[i].Appropriation = parseFloat(newArr[i].Appropriation);
+                        
+        }
+
+        
+
+        var resultFund = 420;
+        var funcList = [];
+
+        //Fill declared arrays with 0 values
+
+        var totalsUnencumbered62 = new Array(11+1).join('0').split('').map(parseFloat);
+        var totalsUnencumbered63 = new Array(11+1).join('0').split('').map(parseFloat);
+        var totalsUnencumbered64 = new Array(11+1).join('0').split('').map(parseFloat);
+        var totalsAppropriation62 = new Array(11+1).join('0').split('').map(parseFloat);
+        var totalsAppropriation63 = new Array(11+1).join('0').split('').map(parseFloat);
+        var totalsAppropriation64 = new Array(11+1).join('0').split('').map(parseFloat);
+
+        for(i=0; i < newArr.length; i++) {
+            if (newArr[i].Fund == resultFund) {
+                funcList.push(newArr[i].Func);
+            }
+        }
+
+        funcList = funcList.filter(function (value, index, array) { return funcList.indexOf(value) == index;});
+
+        //For the sake of easiness function code list is being defined manually
+
+        funcList = [11,12,13,23,33,34,36,41,51,52,53]
+
+        for(i=0; i < newArr.length; i++) {
+            for(j=0; j < funcList.length; j++) {
+                                
+                        if(newArr[i].Fund == "420" && newArr[i].Func == funcList[j] && newArr[i].Obj.substring(0,2) == "62") {
+                            totalsUnencumbered62[j] += newArr[i].Unencumbered;
+                            totalsAppropriation62[j] += newArr[i].Appropriation;
+                            
+                        }
+
+                        else if (newArr[i].Fund == "420" && newArr[i].Func == funcList[j] && newArr[i].Obj.substring(0,2) == "63") {
+                            totalsUnencumbered63[j] += newArr[i].Unencumbered;
+                            totalsAppropriation63[j] += newArr[i].Appropriation;
+                        }
+
+                        else if (newArr[i].Fund == "420" && newArr[i].Func == funcList[j] && newArr[i].Obj.substring(0,2) == "64") {
+                            totalsUnencumbered64[j] += newArr[i].Unencumbered;
+                            totalsAppropriation64[j] += newArr[i].Appropriation;
+                        }
+                    
+                }
+            }
+            
+            var grandUnencumbered = 0;
+            var grandAppropriation = 0;
+
+            for(j=0; j < funcList.length; j++) {
+                grandUnencumbered += totalsUnencumbered62[j] + totalsUnencumbered63[j] + totalsUnencumbered64[j];
+                grandAppropriation += totalsAppropriation62[j] + totalsAppropriation63[j] + totalsAppropriation64[j];
+            }
+
+            for(j=0; j < funcList.length; j++) {
+                
+                if(totalsAppropriation62[j] == 0 || totalsAppropriation63[j] == 0 || totalsAppropriation64[j] == 0) {
+                    jQuery(".used"+funcList[j]+62).html("0.00"+"&#37;");
+                    jQuery(".used"+funcList[j]+63).html("0.00"+"&#37;");
+                    jQuery(".used"+funcList[j]+64).html("0.00"+"&#37;");    
+                }
+                else {
+                    jQuery(".used"+funcList[j]+62).html((((totalsAppropriation62[j]-totalsUnencumbered62[j])/totalsAppropriation62[j])*100).toFixed(2)+"&#37;");
+                    jQuery(".used"+funcList[j]+63).html((((totalsAppropriation63[j]-totalsUnencumbered63[j])/totalsAppropriation63[j])*100).toFixed(2)+"&#37;");
+                    jQuery(".used"+funcList[j]+64).html((((totalsAppropriation64[j]-totalsUnencumbered64[j])/totalsAppropriation64[j])*100).toFixed(2)+"&#37;");
+                }
+                
+                jQuery(".avail"+funcList[j]+62).html("&#36;"+totalsUnencumbered62[j].toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,'));
+                jQuery(".avail"+funcList[j]+63).html("&#36;"+totalsUnencumbered63[j].toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,'));
+                jQuery(".avail"+funcList[j]+64).html("&#36;"+totalsUnencumbered64[j].toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,'));
+
+
+            }
+            
+            jQuery("#totalText").html("Total as of report date:");
+            jQuery("#totalUsed").html((((grandAppropriation-grandUnencumbered)/grandAppropriation)*100).toFixed(2)+"&#37;");
+            jQuery("#totalAvail").html("&#36;"+grandUnencumbered.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,'));
+        
+        
+    };
+    reader.readAsBinaryString(f);
+  }
+  $("#fileUpload").fadeOut(1000);
+  $("#instructions").fadeOut(1000);
+  $("#results").fadeIn(2000);
+  $("#footerNote").fadeIn(2000);
+
+}
+xlf.addEventListener('change', handleFile, false);
+</script>
+
+
+<script src="js/bootstrap.min.js"></script>
+</body>
+   
+
+</html>
